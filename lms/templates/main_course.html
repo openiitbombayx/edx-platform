@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="ie ie7 lte9 lte8 lte7" lang="${LANGUAGE_CODE}"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="${LANGUAGE_CODE}"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="${LANGUAGE_CODE}"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="${LANGUAGE_CODE}"><!--<![endif]-->
+<head>
+    <style>
+
+html,body {
+    font-family: "Open Sans",Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    font-weight: 400;
+    color: rgb(86, 86, 86);
+    min-height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.region-column-wrapper {
+    background-color: rgb(247, 247, 247);
+}
+#content .container {
+    padding: 0px 20px;
+}
+.not-front .container {
+    width: 960px;
+}
+.container {
+    margin: 0px auto;
+}
+.columns {
+    overflow: hidden;
+}
+#content-column, .content-column, div.sidebar {
+    float: left;
+    clear: none;
+}
+#content-column, .content-column {
+    width: 100%;
+}
+.region-column-wrapper .content-column {
+    background-color: rgb(255, 255, 255);
+}
+header[role="banner"], .content-inner, .nav, .region-sidebar-first, .region-sidebar-second, .region-secondary-content, .region-tertiary-content, .region-footer {
+    word-wrap: break-word;
+    overflow: visible;
+}
+.content-inner {
+    min-height: 1px;
+}
+#main-content {
+    padding: 25px;
+}
+#main-content, .block-inner, .pane-inner, .menu-wrapper, .branding-elements, .breadcrumb-wrapper, .attribution, .at-panel .rounded-corner, .block-panels-mini > .block-title, div.messages {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+    display: block;
+}
+.page-courses-all .views-row {
+    border: 1px solid rgb(148, 148, 148);
+    margin-bottom: 30px;
+    min-width: 262px;
+}
+.clearfix {
+}
+.col-right-courses {
+    float: right;
+    border-left: 1px solid rgb(148, 148, 148);
+    width: 262px;
+    position: relative;
+}
+element {
+}
+.col-right-courses .image a, .col-right-courses .image img {
+    display: block;
+}
+a {
+    color: rgb(47, 115, 188);
+    text-decoration: none;
+}
+.col-right-courses .image a, .col-right-courses .image img {
+    display: block;
+}
+img, embed, object, video {
+    max-width: 100%;
+}
+img {
+    border: 0px none;
+}
+.col-right-courses .action {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+.col-right-courses .btn {
+    border-radius: 0px 0px 0px 0px;
+    box-shadow: none;
+    font-weight: 300;
+}
+.btn-large {
+    display: block;
+    font-size: 18px;
+    padding: 10px 20px;
+}
+.btn-primary-blue, .btn-blue {
+    background: none repeat scroll 0px 0px rgb(18, 111, 154);
+    color: white;
+}
+.btn-primary, .btn-primary-blue, .btn-blue, .btn-primary-pink, .btn-pink {
+    text-align: center;
+}
+.btn, .btn-primary, .btn-primary-blue, .btn-blue, .btn-primary-pink, .btn-pink {
+    -moz-box-sizing: border-box;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.25s ease-in-out 0s, background 0.25s ease-in-out 0s, box-shadow 0.25s ease-in-out 0s;
+}
+.btn {
+    border: 0px none;
+}
+.col-left-courses {
+    padding: 15px;
+    max-width: 615px;
+    width: 90%;
+}
+.col-left-courses .new-course-ribbon {
+    height: 29px;
+    width: 30px;
+    position: absolute;
+}
+.col-left-courses .top {
+    min-height: 75px;
+    padding: 0px 0px 0px 45px;
+    margin: 0px;
+}
+.col-left-courses .top .title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.1em;
+    font-weight: normal;
+    border: 0px none;
+    margin: 0px;
+    padding: 0px 0px 10px;
+    line-height: 1em;
+}
+h2 {
+    color: rgb(5, 5, 5);
+}
+b, strong {
+    font-weight: 700;
+    color: rgb(51, 51, 51);
+}
+.col-left-courses .top .title a {
+    color: rgb(86, 86, 86);
+    border: 0px none;
+}
+.copy-detail {
+    font-size: 0.8em;
+    line-height: 1.5em;
+}
+.col-left-courses .bottom {
+    background: none repeat scroll 0px 0px rgb(242, 242, 242);
+    margin-left: 30px;
+    padding-left: 15px;
+    line-height: 30px;
+    overflow: hidden;
+}
+.col-left-courses .bottom ul {
+    list-style: none outside none;
+    margin: 0px;
+    padding: 0px;
+}
+.col-left-courses .bottom ul li.first {
+    list-style-type: none;
+}
+.col-left-courses .bottom ul li {
+    float: left;
+    margin-right: 15px;
+}
+.col-left-courses .bottom ul li .label {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.col-both-courses .action {
+    display: none;
+}
+.col-left-courses .top .title a:focus {
+    color: rgb(47, 115, 188);
+}
+a:focus {
+    outline: thin dotted;
+}
+
+/* Header and footer css */
+
+header.global {
+    border-bottom: 1px solid rgb(138, 140, 143);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    height: 76px;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+}
+
+header.global nav {
+    height: 40px;
+    margin: 0px auto;
+    padding: 18px 10px 0px;
+    max-width: 1180px;
+    min-width: 760px;
+}
+header.global h1.logo {
+    float: left;
+    margin: -2px 39px 0px 0px;
+    position: relative;
+}
+h1 {
+    font-size: 30px;
+}
+h1 {
+    color: rgb(60, 60, 60);
+    font: 2em/1.4em "Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+}
+header.global h1.logo a {
+    display: block;
+}
+img {
+    border: 0px none;
+    vertical-align: middle;
+}
+header.global ol.left {
+    float: left;
+}
+header.global .nav-global {
+    margin-top: 10px;
+    list-style: none outside none;
+}
+nav ul, nav ol {
+    margin: 0px;
+    padding: 0px;
+}
+header.global .nav-global li {
+    display: inline-block;
+    margin: 0px 21px 0px 0px;
+    font-size: 0.875em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0px !important;
+}
+header.global ol > li {
+    position: relative;
+    vertical-align: middle;
+}
+header.global .nav-global li a {
+    display: block;
+    padding: 5px;
+    color: rgb(100, 100, 100);
+    font-weight: 600;
+}
+header.global ol > li a {
+    vertical-align: middle;
+}
+header.global .nav-courseware {
+    float: right;
+    margin-top: 5px;
+    list-style: none outside none;
+}
+header.global ol > li:last-child {
+    margin-right: 0px;
+}
+header.global .nav-courseware li {
+    display: inline-block;
+}
+header.global .nav-courseware li .cta, .view-partial-mktgregister .action.action-register, .view-partial-mktgregister .action.access-courseware {
+    box-shadow: 0px 2px 1px 0px rgb(10, 74, 103);
+    background: none repeat scroll 0% 0% rgb(18, 111, 154);
+    color: rgb(255, 255, 255);
+}
+header.global .nav-courseware li .cta, .view-partial-mktgregister .action.action-register, .view-partial-mktgregister .action.access-courseware, .view-partial-mktgregister .action.is-registered, .view-partial-mktgregister .action.registration-closed, .view-partial-mktgregister .action.coming-soon {
+    border: medium none;
+    padding: 10px 20px;
+    text-align: center;
+    text-shadow: none;
+    font-weight: 500;
+    letter-spacing: 0px;
+}
+header.global .nav-courseware li .cta, .view-partial-mktgregister .action.action-register, .view-partial-mktgregister .action.access-courseware, .view-partial-mktgregister .action.is-registered, .view-partial-mktgregister .action.registration-closed, .view-partial-mktgregister .action.coming-soon {
+    border-radius: 2px 2px 2px 2px;
+    -moz-box-sizing: border-box;
+    transition: color 0.25s ease-in-out 0s, background 0.25s ease-in-out 0s, box-shadow 0.25s ease-in-out 0s;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.wrapper-footer {
+    box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgb(196, 197, 199);
+    padding: 25px 10px 30px;
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+}
+.wrapper-footer footer {
+    max-width: 1180px;
+    min-width: 760px;
+    width: 100%;
+    margin: 0px auto;
+}
+.wrapper-footer footer .colophon {
+    margin-right: 1.69492%;
+    width: 66.1017%;
+    float: left;
+}
+.wrapper-footer footer .colophon .nav-colophon {
+    margin: 5px 0px 30px;
+}
+.wrapper-footer footer p, .wrapper-footer footer ol, .wrapper-footer footer ul {
+    font-family: "Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+}
+nav ul, nav ol {
+    list-style: none outside none;
+    margin: 0px;
+    padding: 0px;
+}
+.wrapper-footer footer .colophon .nav-colophon li {
+    float: left;
+    margin-right: 15px;
+}
+.wrapper-footer footer .colophon .nav-colophon li a {
+    color: rgb(51, 51, 51);
+}
+.wrapper-footer footer a:link, .wrapper-footer footer a:visited, .wrapper-footer footer a:hover, .wrapper-footer footer a:focus, .wrapper-footer footer a:active {
+    border-bottom: medium none;
+    text-decoration: none !important;
+    font-family: "Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+}
+.wrapper-footer footer a {
+    transition: link-color 0.15s ease-in-out 0s, border 0.15s ease-in-out 0s;
+}
+.wrapper-footer footer .colophon .nav-colophon li:last-child {
+    margin-right: 0px;
+}
+.wrapper-footer footer .colophon .colophon-about img {
+    width: 68px;
+    height: 34px;
+    margin-right: 0px;
+    float: left;
+}
+img {
+    border: 0px none;
+    vertical-align: middle;
+}
+.wrapper-footer footer .colophon .colophon-about p {
+    float: left;
+    width: 74.359%;
+    margin-left: 20px;
+    padding-left: 20px;
+    font-size: 0.8125em;
+    background: url("/static/images/bg-footer-divider.30c54acc64a1.jpg") no-repeat scroll 0px 0px transparent;
+}
+p {
+    color: rgb(60, 60, 60);
+    font: 1em/1.6em Georgia,Cambria,"Times New Roman",Times,serif;
+    margin: 0px;
+}
+.wrapper-footer footer .references {
+    margin: -10px 0px 0px;
+    width: 32.2034%;
+    float: right;
+}
+.wrapper-footer footer .references .nav-social {
+    margin: 0px;
+    text-align: right;
+}
+.wrapper-footer footer .references .nav-social li {
+    display: inline-block;
+}
+.wrapper-footer footer .references .nav-social li a {
+    display: block;
+}
+.wrapper-footer footer .references .nav-social li img {
+    display: block;
+}
+.wrapper-footer footer .references .copyright {
+    margin: -2px 0px 8px;
+    font-size: 0.6875em;
+    color: rgb(196, 197, 199);
+    text-align: right;
+}
+.wrapper-footer footer .references .nav-legal {
+    text-align: right;
+}
+.wrapper-footer footer .references .nav-legal li {
+    display: inline-block;
+    font-size: 0.6875em;
+}
+.wrapper-footer footer .references .nav-legal li a {
+    display: block;
+}
+
+/************** end *******************************************/
+
+#forgot-password-modal {
+    border-radius: 2px 2px 2px 2px;
+}
+.modal, .leanModal_box {
+    background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.898);
+    box-shadow: 0px 15px 80px 15px rgba(0, 0, 0, 0.5);
+    color: rgb(255, 255, 255);
+    display: none;
+    left: 50%;
+    padding: 8px;
+    position: absolute;
+    width: 480px;
+    z-index: 12;
+}
+#forgot-password-modal .inner-wrapper {
+    border-radius: 2px 2px 2px 2px;
+    background: none repeat scroll 0% 0% rgb(250, 250, 250);
+    padding-bottom: 0px !important;
+}
+.modal .inner-wrapper, .leanModal_box .inner-wrapper {
+    border: 1px solid rgba(0, 0, 0, 0.898);
+    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.698) inset;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    z-index: 2;
+}
+.modal .inner-wrapper .close-modal, .leanModal_box .inner-wrapper .close-modal {
+    border-radius: 2px 2px 2px 2px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    position: absolute;
+    right: 2px;
+    top: 0px;
+    z-index: 3;
+    color: rgb(100, 100, 100);
+    font: 1.2rem/1.2rem "Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+    text-align: center;
+    transition: all 0.15s ease-out 0s;
+}
+.close-modal, button.close-modal {
+    border: medium none !important;
+    box-shadow: none !important;
+    background: none repeat scroll 0% 0% transparent !important;
+    text-shadow: none !important;
+    letter-spacing: 0px !important;
+    text-transform: none !important;
+}
+button, input, select, textarea {
+    margin: 0px;
+    vertical-align: baseline;
+}
+[class^="icon-"], [class*=" icon-"] {
+    display: inline;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    vertical-align: baseline;
+    background-image: none;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    margin-top: 0px;
+}
+[class^="icon-"], [class*=" icon-"] {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+}
+.sr, .verification-process .carousel #wrapper-review .review-task-contribution .list-fields .field-group-other .contribution-option-other1 label, .verification-process .carousel #wrapper-review .review-task-contribution .list-fields .field-group-other .contribution-option-other2 label, .midcourse-reverification-process .carousel #wrapper-review .review-task-contribution .list-fields .field-group-other .contribution-option-other1 label, .midcourse-reverification-process .carousel #wrapper-review .review-task-contribution .list-fields .field-group-other .contribution-option-other2 label, .verification-process.step-select-track .sts-track, .midcourse-reverification-process.step-select-track .sts-track, .verification-process.step-select-track .contribution-options .field-group-other .contribution-option-other1 label, .verification-process.step-select-track .contribution-options .field-group-other .contribution-option-other2 label, .midcourse-reverification-process.step-select-track .contribution-options .field-group-other .contribution-option-other1 label, .midcourse-reverification-process.step-select-track .contribution-options .field-group-other .contribution-option-other2 label {
+    border: 0px none;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0px;
+    position: absolute;
+    width: 1px;
+}
+span {
+    font: 1em/1.6em "Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+    color: rgb(60, 60, 60);
+}
+#forgot-password-modal #password-reset {
+    padding: 20px;
+}
+#forgot-password-modal #password-reset header {
+    margin: 0px;
+    padding: 0px;
+}
+.modal .inner-wrapper header, .leanModal_box .inner-wrapper header {
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+#forgot-password-modal #password-reset header h2, #forgot-password-modal #password-reset header section.outside-app h1, section.outside-app #forgot-password-modal #password-reset header h1 {
+    text-align: left;
+}
+.login h1, .login h2, .login section.outside-app h1, section.outside-app .login h1, .login h3, .login h4, .login h5, .login h6, .register h1, .register h2, .register section.outside-app h1, section.outside-app .register h1, .register h3, .register h4, .register h5, .register h6, .passwordreset h1, .passwordreset h2, .passwordreset section.outside-app h1, section.outside-app .passwordreset h1, .passwordreset h3, .passwordreset h4, .passwordreset h5, .passwordreset h6, #forgot-password-modal #password-reset h1, #forgot-password-modal #password-reset h2, #forgot-password-modal #password-reset section.outside-app h1, section.outside-app #forgot-password-modal #password-reset h1, #forgot-password-modal #password-reset h3, #forgot-password-modal #password-reset h4, #forgot-password-modal #password-reset h5, #forgot-password-modal #password-reset h6 {
+    letter-spacing: 0px;
+}
+.modal .inner-wrapper header h2, .leanModal_box .inner-wrapper header h2 {
+    position: relative;
+    text-shadow: 0px 1px rgba(255, 255, 255, 0.4);
+    z-index: 2;
+}
+#forgot-password-modal #password-reset .instructions p {
+    margin-bottom: 5px;
+}
+#forgot-password-modal #password-reset form {
+    border-radius: 0px 0px 0px 0px;
+    box-shadow: none;
+    margin: 0px;
+    border: medium none;
+    padding: 0px;
+}
+.modal .inner-wrapper form, .leanModal_box .inner-wrapper form {
+    position: relative;
+    z-index: 2;
+}
+form {
+    font-size: 1em;
+}
+.login form .group-form, .register form .group-form, .passwordreset form .group-form, #forgot-password-modal #password-reset form .group-form {
+    margin: 0px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+#forgot-password-modal #password-reset fieldset {
+    padding: 0px;
+}
+fieldset {
+    border: 0px none;
+}
+legend {
+    border: 0px none;
+    padding: 0px;
+    white-space: normal;
+}
+.login form .list-input, .register form .list-input, .passwordreset form .list-input, #forgot-password-modal #password-reset form .list-input {
+    margin: 0px;
+    padding: 0px;
+    list-style: none outside none;
+}
+.login form .field:last-child, .register form .field:last-child, .passwordreset form .field:last-child, #forgot-password-modal #password-reset form .field:last-child {
+    margin-bottom: 0px;
+}
+.login form .field, .register form .field, .passwordreset form .field, #forgot-password-modal #password-reset form .field {
+    margin: 0px 0px 20px;
+}
+.login form .field.required label, .register form .field.required label, .passwordreset form .field.required label, #forgot-password-modal #password-reset form .field.required label {
+    font-weight: 600;
+}
+.login form .field label, .register form .field label, .passwordreset form .field label, #forgot-password-modal #password-reset form .field label {
+    transition: color 0.15s ease-in-out 0s;
+    margin: 0px 0px 5px;
+    color: rgb(51, 51, 51);
+}
+.login form .field label, .login form .field input, .login form .field textarea, .register form .field label, .register form .field input, .register form .field textarea, .passwordreset form .field label, .passwordreset form .field input, .passwordreset form .field textarea, #forgot-password-modal #password-reset form .field label, #forgot-password-modal #password-reset form .field input, #forgot-password-modal #password-reset form .field textarea {
+    border-radius: 0px 0px 0px 0px;
+    display: block;
+    height: auto;
+    font-family: "Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+    font-style: normal;
+}
+label {
+    cursor: pointer;
+}
+#forgot-password-modal #password-reset form .field.text input, #forgot-password-modal #password-reset form .field.email input, #forgot-password-modal #password-reset form .field.textarea input {
+    background: none repeat scroll 0% 0% rgb(250, 250, 250);
+    margin-bottom: 0px;
+}
+.login form .field input, .login form .field textarea, .register form .field input, .register form .field textarea, .passwordreset form .field input, .passwordreset form .field textarea, #forgot-password-modal #password-reset form .field input, #forgot-password-modal #password-reset form .field textarea {
+    width: 100%;
+    margin: 0px;
+    padding: 10px 15px;
+}
+.login form .field label, .login form .field input, .login form .field textarea, .register form .field label, .register form .field input, .register form .field textarea, .passwordreset form .field label, .passwordreset form .field input, .passwordreset form .field textarea, #forgot-password-modal #password-reset form .field label, #forgot-password-modal #password-reset form .field input, #forgot-password-modal #password-reset form .field textarea {
+    border-radius: 0px 0px 0px 0px;
+    display: block;
+    height: auto;
+    font-family: "Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: rgb(60, 60, 60);
+}
+textarea, input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.6), 0px 0px 3px 0px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-sizing: border-box;
+    font: italic 300 1rem/1.6rem Georgia,Cambria,"Times New Roman",Times,serif;
+    vertical-align: top;
+}
+.login form .field .tip, .register form .field .tip, .passwordreset form .field .tip, #forgot-password-modal #password-reset form .field .tip {
+    transition: color 0.15s ease-in-out 0s;
+    display: block;
+    margin-top: 5px;
+    color: rgb(100, 100, 100);
+    font-size: 0.8125em;
+}
+#forgot-password-modal #password-reset form .form-actions {
+    padding: 0px !important;
+}
+.login .form-actions button[type="submit"], .register .form-actions button[type="submit"], .passwordreset .form-actions button[type="submit"], #forgot-password-modal #password-reset .form-actions button[type="submit"], .view-partial-mktgregister .action.action-register, .view-partial-mktgregister .action.access-courseware {
+    box-shadow: 0px 2px 1px 0px rgb(10, 74, 103);
+    background: none repeat scroll 0% 0% rgb(18, 111, 154);
+    color: rgb(255, 255, 255);
+}
+.login .form-actions button[type="submit"], .register .form-actions button[type="submit"], .passwordreset .form-actions button[type="submit"], #forgot-password-modal #password-reset .form-actions button[type="submit"], .view-partial-mktgregister .action.action-register, .view-partial-mktgregister .action.access-courseware, .view-partial-mktgregister .action.is-registered, .view-partial-mktgregister .action.registration-closed, .view-partial-mktgregister .action.coming-soon {
+    border: medium none;
+    padding: 10px 20px;
+    text-align: center;
+    text-shadow: none;
+    font-weight: 500;
+    letter-spacing: 0px;
+}
+.login .form-actions button[type="submit"], .register .form-actions button[type="submit"], .passwordreset .form-actions button[type="submit"], #forgot-password-modal #password-reset .form-actions button[type="submit"], .view-partial-mktgregister .action.action-register, .view-partial-mktgregister .action.access-courseware, .view-partial-mktgregister .action.is-registered, .view-partial-mktgregister .action.registration-closed, .view-partial-mktgregister .action.coming-soon {
+    border-radius: 2px 2px 2px 2px;
+}
+.login .form-actions button[type="submit"], .register .form-actions button[type="submit"], .passwordreset .form-actions button[type="submit"], #forgot-password-modal #password-reset .form-actions button[type="submit"], .view-partial-mktgregister .action.action-register, .view-partial-mktgregister .action.access-courseware, .view-partial-mktgregister .action.is-registered, .view-partial-mktgregister .action.registration-closed, .view-partial-mktgregister .action.coming-soon {
+    -moz-box-sizing: border-box;
+    transition: color 0.25s ease-in-out 0s, background 0.25s ease-in-out 0s, box-shadow 0.25s ease-in-out 0s;
+    cursor: pointer;
+    text-decoration: none;
+}
+#forgot-password-modal #password-reset form .form-actions .action-primary {
+    float: none;
+    display: block !important;
+    width: 100%;
+}
+.login .form-actions .action-primary, .register .form-actions .action-primary, .passwordreset .form-actions .action-primary, #forgot-password-modal #password-reset .form-actions .action-primary {
+    margin-right: -100%;
+}
+button, input {
+    line-height: normal;
+}
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0px;
+    vertical-align: baseline;
+}
+.annotator-notice {
+    color: rgb(255, 255, 255);
+    position: fixed;
+    top: -54px;
+    left: 0px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 50px;
+    text-align: center;
+    background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.898);
+    border-bottom: 4px solid rgb(212, 212, 212);
+    transition: top 0.4s ease-out 0s;
+}
+.annotator-adder, .annotator-outer, .annotator-notice {
+    z-index: 1020;
+}
+.annotator-notice, .annotator-filter *, .annotator-widget * {
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: none;
+}
+.nav-skip {
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: -600px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(252, 252, 252);
+    padding: 15px 10px;
+}
+a:link, a:visited {
+    color: rgb(29, 157, 217);
+    font: 1em/1em "Open Sans",Verdana,Geneva,sans-serif,sans-serif;
+    text-decoration: none;
+    transition: all 0.1s linear 0s;
+}
+
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<%! from django.utils.translation import ugettext as _ %>
+<%! from microsite_configuration import microsite %>
+<%! from microsite_configuration import page_title_breadcrumbs %>
+
+<%namespace name='static' file='static_content.html'/>
+<%! from django.utils import html %>
+
+## Define a couple of helper functions to make life easier when
+## embedding theme conditionals into templates. All inheriting
+## templates have access to these functions, and we can import these
+## into non-inheriting templates via the %namespace tag.
+<%def name="theme_enabled()">
+  <% return settings.FEATURES.get("USE_CUSTOM_THEME", False) %>
+</%def>
+
+<%def name="stanford_theme_enabled()">
+  <%
+    if not theme_enabled():
+      return False
+
+    return getattr(settings, "THEME_NAME", None) == "stanford"
+  %>
+</%def>
+
+## this needs to be here to prevent the title from mysteriously appearing in the body, in one case
+<%def name="pagetitle()" />
+  <%block name="title">
+      <title>
+       ${page_title_breadcrumbs(self.pagetitle())}
+      </title>
+  </%block>
+
+  <script type="text/javascript">
+    /* immediately break out of an iframe if coming from the marketing website */
+    (function(window) {
+      if (window.location !== window.top.location) {
+        window.top.location = window.location;
+      }
+    })(this);
+  </script>
+
+  <script type="text/javascript" src="/jsi18n/"></script>
+
+  <link rel="icon" type="image/x-icon" href="${static.url(microsite.get_value('favicon_path', settings.FAVICON_PATH))}" />
+
+
+
+  <%static:js group='main_vendor'/>
+
+  <%block name="headextra"/>
+
+<%
+  if theme_enabled():
+    header_extra_file = 'theme-head-extra.html'
+    header_file = 'theme-header.html'
+    google_analytics_file = 'theme-google-analytics.html'
+    footer_file = 'theme-footer.html'
+
+    style_overrides_file = None
+
+  else:
+    header_extra_file = None
+    header_file = microsite.get_template_path('navigation.html')
+    google_analytics_file = microsite.get_template_path('google_analytics.html')
+    footer_file = microsite.get_template_path('course_footer.html')
+
+    style_overrides_file = microsite.get_value('css_overrides_file')
+%>
+
+  % if header_extra_file:
+    <%include file="${header_extra_file}" />
+  % endif
+
+  <!--[if lt IE 9]>
+    <script src="${static.url('js/html5shiv.js')}"></script>
+  <![endif]-->
+
+  <meta name="path_prefix" content="${EDX_ROOT_URL}">
+  <meta name="google-site-verification" content="_mipQ4AtZQDNmbtOkwehQDOgCxUUV2fb_C0b6wbiRHY" />
+
+  % if not course:
+    <%include file="${google_analytics_file}" />
+  % endif
+
+  <%include file="widgets/segment-io.html" />
+
+
+% if style_overrides_file:
+  <link rel="stylesheet" type="text/css" href="${static.url(style_overrides_file)}" />
+% endif
+
+</head>
+
+<body class="<%block name='bodyclass'/> lang_${LANGUAGE_CODE}">
+  <a class="nav-skip" href="<%block name="nav_skip">#content</%block>">${_("Skip to this view's content")}</a>
+
+  <%include file="mathjax_accessible.html" />
+   
+
+  <div class="content-wrapper" id="content">
+    <%include file="${header_file}" />
+    ${self.body()}
+    <%block name="bodyextra"/>
+  </div>
+
+
+  <script>window.baseUrl = "${settings.STATIC_URL}";</script>
+  <%static:js group='application'/>
+  <%static:js group='module-js'/>
+
+  <%block name="js_extra"/>
+</body>
+</html>
+
+<%def name="login_query()">${
+  u"?course_id={0}&enrollment_action={1}".format(
+    html.escape(course_id),
+    html.escape(enrollment_action)
+  ) if course_id and enrollment_action else ""
+}</%def>
+
+

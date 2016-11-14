@@ -1,0 +1,81 @@
+## mako
+<%! from django.core.urlresolvers import reverse %>
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='static_content.html'/>
+<%! from microsite_configuration.templatetags.microsite import platform_name %>
+
+
+<footer role="contentinfo" class="clearfix region-footer" id="footer">
+                    <div class="region-footer-columns region-container container">
+            <div class="region-container-inner">
+        
+          <div class="region region-footer-first">
+             <div class="region-inner clearfix">
+                 <div class="region-container-inner">
+   <nav role="navigation" class="block block-menu-block nav block-menu-business no-title" id="block-menu-block-3">
+
+  <div class="menu-block-wrapper menu-block-3 menu-name-menu-business-menu parent-mlid-0 menu-level-1">
+
+  <ul class="menu clearfix">
+         <li class="first leaf has-children menu-mlid-10081 menu-depth-1 menu-item-10081">
+              <a target="_blank" title="About" href="${marketing_link('ABOUT')}">${_("About")}</a></li>
+<!----------
+         <li class="leaf menu-mlid-10089 menu-depth-1 menu-item-10089">
+              <a target="_blank" title="Jobs" href="/jobs">Jobs</a></li>
+         <li class="leaf has-children menu-mlid-10091 menu-depth-1 menu-item-10091">
+              <a title="News" href="/news">News</a></li>
+         <li class="leaf menu-mlid-10084 menu-depth-1 menu-item-10084">
+              <a target="_blank" title="IITBombayX Blog" href="/edx-blog">Blog</a></li>
+------->
+         <li class="leaf menu-mlid-10087 menu-depth-1 menu-item-10087">
+              <a title="FAQ" href="${marketing_link('FAQ')}">${_("FAQ")}</a></li>
+         <li class="leaf menu-mlid-9010 menu-depth-1 menu-item-9010">
+              <a title="" href="${marketing_link('CONTACT')}">${_("Contact")}</a></li>
+<!------
+         <li class="last leaf menu-mlid-10367 menu-depth-1 menu-item-10367">
+              <a title="Donate to IITBombayX" href="/donate">Donate to IITBombayX</a></li></ul></div>
+------>
+  </nav>
+
+   <div class="block block-block block-disclosure copy-detail no-title" id="block-block-4">
+
+  <!--IITBombayX-2016 footer logo URL changed to get image from Theme folder-->
+  <p><img src="${static.url('themes/'+settings.THEME_NAME+'/images/footerlogo.png')}" alt="${_('{platform_name} Logo').format(platform_name=platform_name())}"><img src="${static.url('images/bg-footer-divider.jpg')}" alt="">${_("{platform_name} is an initiative taken by the  Government of India with the mission to bring the best education to students across the nation wherever there is internet access. It offers free Massive Open On-line Courses (MOOCs) which are interactive and include subjects in the field of Arts, Commerce, Science, Engineering, Technology, Medical Sciences, Law, Business and many more...").format(platform_name=platform_name())}</p>
+  </div></div></div></div>          
+
+  <div class="region region-footer-second">
+
+       <div class="region-inner clearfix">
+            <div class="region-container-inner">
+               <div role="navigation" class="block block-menu nav block-menu-social no-title" id="block-menu-menu-social-menu">
+
+  <ul class="menu clearfix">
+        <li class="first leaf menu-depth-1 menu-item-8139">
+              <a target="_blank" class="menu_icon menu-8139" title="Facebook" href="http://www.facebook.com/">Facebook</a></li>
+        <li class="leaf menu-depth-1 menu-item-8141">
+              <a target="_blank" class="menu_icon menu-8141" title="Twitter" href="https://twitter.com/">Twitter</a></li>
+        <li class="leaf menu-depth-1 menu-item-8142">
+              <a target="_blank" class="menu_icon menu-8142" title="Google+" href="https://plus.google.com/108235383044095082735/posts">Google+</a></li>
+        <li class="leaf menu-depth-1 menu-item-8140">
+              <a target="_blank" class="menu_icon menu-8140" title="Youtube" href="https://youtube.com/user/">LinkedIn</a></li>
+  </ul>
+ </div><div 
+
+  class="block block-block block-copyright copy-meta no-title" id="block-block-3">
+
+  <p>${_("&copy; 2014 {platform_name}, some rights reserved.").format(platform_name=settings.PLATFORM_NAME)}</p>
+
+  </div>
+
+   <div role="navigation" class="block block-menu nav block-menu-supplement copy-meta no-title" id="block-menu-menu-supplement-menu">
+
+  <ul class="menu clearfix">
+       <li class="first leaf menu-depth-1 menu-item-10080">
+            <a title="Terms of Service and Honor Code" href="${marketing_link('TOS')}">${_("Terms of Service and Honor Code")}</a></li>
+       <li class="last leaf menu-depth-1 menu-item-10079">
+            <a title="Privacy Policy" href="${marketing_link('PRIVACY')}">${_("Privacy Policy")}</a></li>
+  </ul>
+  </div></div></div></div>            </div>
+        </div>
+          </footer>
+

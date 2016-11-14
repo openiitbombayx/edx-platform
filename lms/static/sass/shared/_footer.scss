@@ -1,0 +1,425 @@
+// Open edX: LMS footer
+// ====================
+@import '../base/grid-settings';
+@import 'neat/neat'; // lib - Neat
+
+.wrapper-footer {
+  box-shadow: 0 -1px 5px 0 $shadow-l1;
+  border-top: 1px solid tint($m-gray, 50%);
+  padding: 25px ($baseline/2) ($baseline*1.5) ($baseline/2);
+  background: $footer-bg;
+  clear: both;
+
+  footer#footer-openedx {
+    @include clearfix();
+    @include box-sizing(border-box);
+    @include outer-container;
+    margin: 0 auto;
+
+    p, ol, ul {
+      font-family: $sans-serif;
+
+      // override needed for poorly scoped font-family styling on p a:link {}
+      a {
+        font-family: $sans-serif;
+      }
+    }
+
+    a {
+      @include transition(link-color 0.15s ease-in-out 0s, border 0.15s ease-in-out 0s);
+      border-bottom: none;
+      color: $link-color;
+      text-decoration: none !important;
+      //font-family: $sans-serif;
+
+      &:hover, &:focus, &:active {
+        border-bottom: 1px dotted $link-color;
+        //color: $link-color;
+      }
+    }
+
+    // colophon
+    .colophon {
+      @include span-columns(8);
+
+      @include media($bp-small) {
+        @include fill-parent();
+      }
+
+      @include media($bp-tiny) {
+        @include fill-parent();
+      }
+
+
+      .nav-colophon {
+        @include clearfix();
+        margin: $footer_margin;
+
+        li {
+          @include float(left);
+          margin-right: ($baseline*0.75);
+
+          a {
+            color: tint($black, 20%);
+
+            &:hover, &:focus, &:active {
+              color: $link-color;
+            }
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .colophon-about {
+        @include clearfix();
+
+        img {
+          width: 68px;
+          height: 34px;
+          margin-right: 0;
+          float: left;
+        }
+
+        p {
+          float: left;
+          width: flex-grid(6,8);
+          margin-left: $baseline;
+          padding-left: $baseline;
+          font-size: em(13);
+          background: transparent url(/static/images/bg-footer-divider.jpg) 0 0 no-repeat;
+        }
+      }
+    }
+
+    // references
+    .references {
+      //margin: -10px 0 0 0; //IITBombayX-2015, Commented by Nitin Ayer
+      width: flex-grid(4,12);
+      display: inline-block;
+    }
+
+    .wrapper-logo {
+      margin: ($baseline*0.75) 0;
+
+      a {
+        display: inline-block;
+
+        &:hover {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    .copyright {
+      margin: -2px 0 8px 0;
+      font-size: em(11);
+      color: $gray-l2;
+      @include text-align(left);
+    }
+
+    .nav-legal {
+      @include clearfix();
+      @include text-align(left);
+
+      li {
+        display: inline-block;
+        font-size: em(11);
+
+      }
+
+      .nav-legal-02 a {
+
+        &:before {
+          margin-right: ($baseline/4);
+          content: "-";
+        }
+      }
+    }
+
+    .nav-social {
+      margin: 0;
+      text-align: right;
+
+      li {
+        display: inline-block;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        a {
+          display: block;
+
+          &:hover, &:focus, &:active {
+            border: none;
+          }
+        }
+
+        img {
+          display: block;
+        }
+      }
+    }
+
+    // platform Open edX logo and link
+    .footer-about-openedx {
+      @include span-columns(4);
+      @include text-align(right);
+      vertical-align: bottom;
+
+      @include media($bp-small) {
+        @include fill-parent();
+      }
+
+      @include media($bp-tiny) {
+        @include fill-parent();
+      }
+
+      a {
+        @include float(right);
+        display: inline-block;
+
+        &:hover {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  // edx theme overrides
+  &.edx-footer {
+
+    footer {
+
+      .copyright {
+        text-align: right;
+      }
+
+      .nav-legal {
+        text-align: right;
+      }
+    }
+  }
+}
+
+// marketing site design syncing
+.view-register, .view-login, .view-passwordreset {
+
+  .wrapper-footer footer {
+    width: 960px;
+
+    .colophon-about img {
+      margin-top: ($baseline*1.5);
+    }
+  }
+}
+
+
+// edX theme: LMS Footer
+// ====================
+$edx-footer-spacing: ($baseline*0.75);
+$edx-footer-link-color: $link-color;
+$edx-footer-bg-color: rgb(252,252,252);
+
+%edx-footer-reset {
+  @include box-sizing(border-box);
+}
+
+%edx-footer-section {
+  @include float(left);
+  min-height: ($baseline*17.5);
+  @include margin-right(flex-gutter());
+  @include border-right(1px solid rgb(230, 230, 230));
+  @include padding-right($baseline*1.5);
+
+  // CASE: last child
+  &:last-child {
+    @include margin-right(0);
+    border: none;
+    @include padding-right(0);
+  }
+}
+
+%edx-footer-title {
+  // TODO: refactor _typography.scss to extend this set of styling
+  @extend %t-title;
+  @extend %t-weight4;
+  @include font-size(15);
+  @include line-height(15);
+  text-transform: none;
+  letter-spacing: inherit;
+  color: rgb(61, 62, 63);
+}
+
+%edx-footer-link {
+  @extend %t-copy-sub1;
+  @include transition(color $tmg-f2 ease-in-out 0);
+  display: block;
+  margin-bottom: ($baseline/2);
+
+  // NOTE: resetting poor link styles
+  border: none;
+  padding: 0;
+  color: $edx-footer-link-color;
+
+  .copy {
+    @include transition(border-color $tmg-f2 ease-in-out 0);
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+    padding: 0 0 ($baseline/20) 0;
+    color: $edx-footer-link-color;
+  }
+
+  // STATE: hover + focused
+  &:hover, &:focus {
+    color: saturate($edx-footer-link-color, 25%);
+
+    // NOTE: resetting poor link styles
+    border: none;
+
+    .copy {
+      border-bottom-color: saturate($edx-footer-link-color, 25%);
+    }
+  }
+
+  // CASE: last child
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // CASE: has visual emphasis
+  &.has-emphasis {
+    @extend %t-weight4;
+
+    .copy {
+      @extend %t-weight4;
+    }
+  }
+}
+
+//IITBombayX-2015, Below CSS is for theme footer and LMS footer, added by Nitin Ayer
+
+.wrapper-footer {
+  width: auto;
+  max-width: 100%;
+  min-width: 1200px;
+  margin: 0px !important;
+  line-height: 1em;
+  padding: 16px 10px 30px !important;
+  
+  footer {
+   width:1180px;//IITBombayX-2016 width changed by Nitin Ayer from 960px to 1180px
+   margin:auto;
+   //box-sizing: border-box;
+   max-width: 1180px;//IITBombayX-2016 width changed by Nitin Ayer from 960px to 1180px
+   min-width: 760px;
+   //IITBombayX Cypress related 2nd Nov 2015 
+   overflow: hidden;
+
+   .colophon {
+    margin-right: 2.35765%;
+    width: 65.8808%;
+    float: left;
+
+    .nav-colophon, #footer-openedx .nav-colophon {
+     margin: 5px 0px 20px !important;
+     
+     ol>li {
+      float: left;
+      margin-right: 15px;
+      color: $lighter-base-font-color;
+     }
+
+     ol>li:last-child {
+      margin-right: 0px;
+      color: $lighter-base-font-color;
+      float: inherit;
+     }
+
+     ol>li a:link, ol>li a:visited, ol>li a:focus, ol>li a:active, #footer-openedx ol>li a:link, #footer-openedx ol>li a:visited, #footer-openedx ol>li a:focus, #footer-openedx ol>li a:active {
+      color: $lighter-base-font-color !important;
+      border-bottom: none;
+      text-decoration: none;
+     }
+     ol>li a:hover, #footer-openedx ol>li a:hover {
+      color: $link-color !important;
+      border-bottom: none !important;
+      text-decoration: none !important;
+     }
+    }
+    
+    .colophon-about img, #footer-openedx .colophon-about img {
+     float: left;
+     //width: auto !important;
+     height: auto !important;
+    }
+
+    .platform_text, #footer-openedx .platform_text{
+     float: left;
+     width: 79% !important;
+     margin-left: 20px;
+     padding-left: 20px;
+     font-size: 0.8125em;
+     background: transparent url("/static/images/bg-footer-divider.jpg") no-repeat scroll 0px 0px;
+     font-family: $sans-serif;
+     text-align: justify;
+     color: $lighter-base-font-color;
+     height: 100%;
+     display: block;
+    } 
+   }
+   .references {
+    //margin: -10px 0px 0px;
+    width: 31.7616%;
+    display: inline-block;
+   
+    .nav-social {
+     margin: 0px;
+     text-align: right;
+
+     li {
+     display: inline-block;
+    } 
+   }
+   
+    .nav-legal ul {
+     display: block;
+     float: right;
+     text-align: right;
+     
+     li{
+      font-size: 0.6875em;
+      display: block !important;
+      
+      a{
+	transition: link-color 0.15s ease-in-out 0s, border 0.15s ease-in-out 0s;
+	border-bottom: medium none;
+	color: $link-color;
+	text-decoration: none !important;
+     }
+      a:hover{
+	border-bottom: 1px dotted $link-color;
+     }
+    }
+   }
+  }
+ }
+}
+
+.wrapper-footer footer .open-edx_logo, #footer-openedx .open-edx_logo {
+	float: right;
+	padding-top: 1.8em; //IITBombayX-2016 padding changed by Nitin Ayer
+	width: 50%;
+	height: 50%;
+}
+
+.wrapper-footer footer .references .nav-legal .nav-legal-01 a:after {
+	content: none;
+}
+
+.wrapper-footer footer#footer-openedx .nav-legal .nav-legal-02 a::before{
+	content: none;
+}

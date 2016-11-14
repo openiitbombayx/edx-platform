@@ -1,0 +1,54 @@
+<%doc>IITBombayX TickCross Problem 6th August 2015 starts</%doc>
+<% submit_checked = False %>
+%if due_answer and (due_graded and not due_timed):
+    <%submit_checked = True %>
+%endif
+<%doc>IITBombayX TickCross Problem 6th August 2015 ends</%doc>
+<%! from django.utils.translation import ugettext as _ %>
+<section id="textbox_${id}" class="capa_inputtype textbox cminput">
+  <textarea rows="${rows}" cols="${cols}" name="input_${id}" 
+            aria-label="${_("{programming_language} editor").format(programming_language=mode)}" 
+            aria-describedby="answer_${id}" 
+            id="input_${id}" 
+            tabindex="0"
+            data-mode="${mode}"
+            data-tabsize="${tabsize}"
+            % if linenumbers:
+            data-linenums="true"
+            % endif
+            % if hidden:
+      	    style="display:none;"
+            % endif
+  >${value|h}</textarea>
+
+  <div class="grader-status" tabindex="-1">
+<%doc>IITBombayX TickCross Problem 6th August 2015 code changes</%doc>
+      <span id="status_${id}"
+            class="${status.classname if not submit_checked else 'unanswered'}"
+            aria-describedby="input_${id}"
+      >
+          <span class="status sr">${status.display_name}</span>
+      </span>
+    % if status == 'queued':
+      <span style="display:none;" class="xqueue" id="${id}">${queue_len}</span>
+    % endif
+
+    % if hidden:
+      <div style="display:none;" name="${hidden}" inputid="input_${id}" />
+    % endif
+<%doc>IITBombayX TickCross Problem 6th August 2015 if condition modified</%doc>
+    % if not submit_checked:
+    <p class="debug">${status.display_name}</p>
+    % elif submit_checked and status.display_name in ['correct', 'incorrect']:
+    <p class="debug">${_("Answered")}</p>
+    % elif submit_checked:
+    <p class="debug">${status.display_name}</p>
+    % endif
+  </div>
+
+  <span id="answer_${id}"></span>
+
+  <div class="external-grader-message" aria-live="polite">
+    ${msg|n}
+  </div>
+</section>

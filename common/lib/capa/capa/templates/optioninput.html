@@ -1,0 +1,34 @@
+<%doc>IITBombayX TickCross Problem 6th August 2015 starts</%doc>
+<% submit_checked = False %>
+%if due_answer and (due_graded and not due_timed):
+    <%submit_checked = True %>
+%endif
+<%doc>IITBombayX TickCross Problem 6th August 2015 ends</%doc>
+<% doinline = "inline" if inline else "" %>
+
+<form class="inputtype option-input ${doinline}">
+   <select name="input_${id}" id="input_${id}" aria-label="${label}" aria-describedby="answer_${id}">
+      <option value="option_${id}_dummy_default">  </option>
+      % for option_id, option_description in options:
+          <option value="${option_id}"
+          % if (option_id==value or option_id==answervariable):
+        	selected="true"
+          % endif
+          > ${option_description}</option>
+      % endfor
+    </select>
+
+  <span id="answer_${id}"></span>  
+  <div class="indicator-container">
+<%doc>IITBombayX TickCross Problem 6th August 2015 if condition changes</%doc>
+    <span class="status ${status.classname if not submit_checked else 'unanswered'}"
+        id="status_${id}"
+        aria-describedby="input_${id}" data-tooltip="${status.display_tooltip}">
+      <span class="sr">${value|h} - ${status.display_name}</span>
+    </span>
+  </div>
+  % if msg:
+      <span class="message">${msg|n}</span>
+  % endif
+
+</form>
