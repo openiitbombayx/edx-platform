@@ -94,7 +94,7 @@ FEATURES = {
 
     # If set to True, Studio won't restrict the set of advanced components
     # to just those pre-approved by edX
-    'ALLOW_ALL_ADVANCED_COMPONENTS': True,
+    'ALLOW_ALL_ADVANCED_COMPONENTS': False,
 
     # Turn off account locking if failed login attempts exceeds a limit
     'ENABLE_MAX_FAILED_LOGIN_ATTEMPTS': False,
@@ -774,12 +774,6 @@ INSTALLED_APPS = (
     'openedx.core.djangoapps.credit',
 
     'xblock_django',
-
-    #Image Difference Assignment XBlock
-    'xblimagediff',
-
-    #Oppia explorations
-    'oppia',
 )
 
 
