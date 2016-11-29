@@ -1,7 +1,3 @@
-.. |br| raw:: html
-
-   <br />
-   
 This is the main edX platform which consists of LMS and Studio.
 _______________________________________________________________
 
@@ -9,8 +5,6 @@ _______________________________________________________________
 
 Installation
 ============
-
-|
 
 1. Install Open edX Cypress From this link given below:
 #######################################################
@@ -52,14 +46,22 @@ Installation
 +-----------------------------------------------+
 |sudo vi /edx/app/edxapp/lms.env.json           |
 +-----------------------------------------------+
-"USE_CUSTOM_THEME": true |br| "THEME_NAME": "iitbxcypress-theme", |br| "PLATFORM_NAME": "IITBombayX",
+"USE_CUSTOM_THEME": true
+
+"THEME_NAME": "iitbxcypress-theme",
+
+"PLATFORM_NAME": "IITBombayX",
 
 |
 
 +-----------------------------------------------+
 |sudo vi /edx/app/edxapp/cms.env.json           |
 +-----------------------------------------------+
-"USE_CUSTOM_THEME": true |br| "THEME_NAME": "iitbxcypress-theme", |br| "PLATFORM_NAME": "IITBombayX",
+"USE_CUSTOM_THEME": true
+
+"THEME_NAME": "iitbxcypress-theme",
+
+"PLATFORM_NAME": "IITBombayX",
 
 |
 
@@ -135,9 +137,17 @@ Installation
 * **Add the following variables in /edx/app/edxapp/lms.env.json file.**
 **If it is already present, just change the values. OR the lines should be added before: "ANALYTICS_SERVER_URL": "",** 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|"ADVANCED_SECURITY_CONFIG": { |br| "MIN_DIFFERENT_STAFF_PASSWORDS_BEFORE_REUSE":1, |br| "MIN_DIFFERENT_STUDENT_PASSWORDS_BEFORE_REUSE":1 |br| }, |br| "ADVANCED_SECURITY": true, |
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------+
+|"ADVANCED_SECURITY_CONFIG": {                          |
+|				                        |
+|"MIN_DIFFERENT_STAFF_PASSWORDS_BEFORE_REUSE":1,        |
+|							|
+|"MIN_DIFFERENT_STUDENT_PASSWORDS_BEFORE_REUSE":1       |
+|							|
+|},                                                     |
+|							|
+|"ADVANCED_SECURITY": true,                             |
++-------------------------------------------------------+
 
 |
 
@@ -151,9 +161,36 @@ Installation
 * **There is a dictionary called "REGISTRATION_EXTRA_FIELDS" in /edx/app/edxapp/lms.env.json file. Delete the entire dictionary.**
 **eg. if the dictionary is as follows:**
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| REGISTRATION_EXTRA_FIELDS = { |br| 'state':'required', |br| 'city': 'required', |br| 'pincode': 'required', |br| 'aadhar_id':'optional', |br| 'level_of_education': 'optional', |br| 'gender': 'optional', |br| 'year_of_birth': 'optional', |br| 'mailing_address': 'optional', |br| 'goals': 'optional', |br| 'honor_code': 'required', |br| 'terms_of_service': 'hidden', |br| 'country': 'hidden', |br| } |
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++-----------------------------------------------+
+|REGISTRATION_EXTRA_FIELDS = {			|
+|						|
+|'state':'required',				|
+|						|
+|'city': 'required',				|
+|						|
+|'pincode': 'required',				|
+|						|
+|'aadhar_id':'optional',			|
+|						|
+|'level_of_education': 'optional',		|
+|						|
+|'gender': 'optional',				|
+|						|
+|'year_of_birth': 'optional',			|
+|						|
+|'mailing_address': 'optional',			|
+|						|
+|'goals': 'optional',				|
+|						|
+|'honor_code': 'required',			|
+|						|
+|'terms_of_service': 'hidden',			|
+|						|
+|'country': 'hidden',				|
+|						|
+|} 						|
++-----------------------------------------------+
 
 |
 **delete the entire text above. (If not deleted this State and City will not comes While REGITER User Account)**
@@ -164,6 +201,8 @@ Installation
 +-----------------------------------------+
 |sudo vi /edx/app/edxapp/cms.env.json     |
 +-----------------------------------------+
+
+"STUDIO_NAME": "IITBombayX Studio",
 
 |
 
