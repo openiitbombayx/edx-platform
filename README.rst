@@ -1,119 +1,222 @@
 This is the main edX platform which consists of LMS and Studio.
+_______________________________________________________________
 
+|
 
 Installation
-------------
+============
 
-Please refer to the following wiki pages in our `configuration repo`_ to
-install edX:
+1. Install Open edX Cypress From this link given below:
+#######################################################
 
--  `edX Developer Stack`_: These instructions are for developers who want
-   to contribute or make changes to the edX source code.
--  `edX Full Stack`_: Using Vagrant/Virtualbox this will setup all edX
-   services on a single server in a production like configuration.
--  `edX Ubuntu 12.04 64-bit Installation`_: This will install edX on an
-   existing Ubuntu 12.04 server.
++----------------------------------------------------------------------------------------------------+
+|https://openedx.atlassian.net/wiki/display/OpenOPS/Native+Open+edX+Ubuntu+12.04+64+bit+Installation |
++----------------------------------------------------------------------------------------------------+
 
-.. _configuration repo: https://github.com/edx/configuration
-.. _edX Developer Stack: https://github.com/edx/configuration/wiki/edX-Developer-Stack
-.. _edX Full Stack: https://github.com/edx/configuration/wiki/edX-Full-Stack
-.. _edX Ubuntu 12.04 64-bit Installation: https://github.com/edx/configuration/wiki/edX-Ubuntu-12.04-64-bit-Installation
+|
+
+2. Cypress - IITBombayX
+#######################
+
+* **Run commands below to clone edx-platform from github**
++----------------------------------------------------------------------------------------------------+
+|cd /edx/app/edxapp                                                                                  |
+|                                                                                                    |
+|sudo mv  edx-platform edx-platform-old                                                              |
+|                                                                                                    |
+|sudo -H -S -u edxapp /bin/sh -c "git clone https://github.com/openiitbombayx/edx-platform.git"      |
++----------------------------------------------------------------------------------------------------+
+
+|
+
+* **Run command below to make directory and clone theme from github**
++-----------------------------------------------------------------------------------------------------+
+|cd /edx/app/edxapp                                                                                   |
+|                                                                                                     |
+|sudo -H -S -u edxapp /bin/sh -c "mkdir themes"                                                       |
+|                                                                                                     |
+|cd /edx/app/edxapp/themes                                                                            |
+|                                                                                                     |
+|sudo -H -S -u edxapp /bin/sh -c "git clone https://github.com/openiitbombayx/iitbxcypress-theme.git" |      
++-----------------------------------------------------------------------------------------------------+
+
+|
+
+* **Edit lms.env.json, cms.env.json both and change values below:**
++-----------------------------------------------+
+|sudo vi /edx/app/edxapp/lms.env.json           |
++-----------------------------------------------+
+"USE_CUSTOM_THEME": true
+
+"THEME_NAME": "iitbxcypress-theme",
+
+"PLATFORM_NAME": "IITBombayX",
+
+|
+
++-----------------------------------------------+
+|sudo vi /edx/app/edxapp/cms.env.json           |
++-----------------------------------------------+
+"USE_CUSTOM_THEME": true
+
+"THEME_NAME": "iitbxcypress-theme",
+
+"PLATFORM_NAME": "IITBombayX",
+
+|
+
+* **cd /edx/app/edxapp/edx-platform**
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|sudo -H -S -u edxapp /bin/sh -c "HOME=/edx/app/edxapp RBENV_ROOT=/edx/app/edxapp/.rbenv GEM_HOME=/edx/app/edxapp/.gem PATH=/edx/app/edxapp/venvs/edxapp/bin:/edx/app/edxapp/edx-platform/bin:/edx/app/edxapp/.rbenv/bin:/edx/app/edxapp/.rbenv/shims:/edx/app/edxapp/.gem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NO_PREREQ_INSTALL=1 GEM_PATH=/edx/app/edxapp/.gem SKIP_WS_MIGRATIONS=1 LANG=en_US.UTF-8 gem install bundle"   |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+|
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|sudo -H -S -u edxapp /bin/sh -c "HOME=/edx/app/edxapp RBENV_ROOT=/edx/app/edxapp/.rbenv GEM_HOME=/edx/app/edxapp/.gem PATH=/edx/app/edxapp/venvs/edxapp/bin:/edx/app/edxapp/edx-platform/bin:/edx/app/edxapp/.rbenv/bin:/edx/app/edxapp/.rbenv/shims:/edx/app/edxapp/.gem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NO_PREREQ_INSTALL=1 GEM_PATH=/edx/app/edxapp/.gem SKIP_WS_MIGRATIONS=1 LANG=en_US.UTF-8 bundle install --binstubs"    |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+|
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|sudo -H -S -u edxapp /bin/sh -c "HOME=/edx/app/edxapp RBENV_ROOT=/edx/app/edxapp/.rbenv GEM_HOME=/edx/app/edxapp/.gem PATH=/edx/app/edxapp/venvs/edxapp/bin:/edx/app/edxapp/edx-platform/bin:/edx/app/edxapp/.rbenv/bin:/edx/app/edxapp/.rbenv/shims:/edx/app/edxapp/.gem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NO_PREREQ_INSTALL=1 GEM_PATH=/edx/app/edxapp/.gem SKIP_WS_MIGRATIONS=1 LANG=en_US.UTF-8 npm install"                  |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+|
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|sudo -H -S -u edxapp /bin/sh -c "HOME=/edx/app/edxapp RBENV_ROOT=/edx/app/edxapp/.rbenv GEM_HOME=/edx/app/edxapp/.gem PATH=/edx/app/edxapp/venvs/edxapp/bin:/edx/app/edxapp/edx-platform/bin:/edx/app/edxapp/.rbenv/bin:/edx/app/edxapp/.rbenv/shims:/edx/app/edxapp/.gem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NO_PREREQ_INSTALL=1 GEM_PATH=/edx/app/edxapp/.gem SKIP_WS_MIGRATIONS=1 LANG=en_US.UTF-8 /edx/app/edxapp/venvs/edxapp/bin/pip install -i https://pypi.python.org/simple --exists-action w --use-mirrors -r /edx/app/edxapp/edx-platform/requirements/edx/pre.txt"        |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+|
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|sudo -H -S -u edxapp /bin/sh -c "HOME=/edx/app/edxapp RBENV_ROOT=/edx/app/edxapp/.rbenv GEM_HOME=/edx/app/edxapp/.gem PATH=/edx/app/edxapp/venvs/edxapp/bin:/edx/app/edxapp/edx-platform/bin:/edx/app/edxapp/.rbenv/bin:/edx/app/edxapp/.rbenv/shims:/edx/app/edxapp/.gem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NO_PREREQ_INSTALL=1 GEM_PATH=/edx/app/edxapp/.gem SKIP_WS_MIGRATIONS=1 LANG=en_US.UTF-8 /edx/app/edxapp/venvs/edxapp/bin/pip install -i https://pypi.python.org/simple --exists-action w --use-mirrors -r /edx/app/edxapp/edx-platform/requirements/edx/base.txt"       |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+|
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|sudo -H -S -u edxapp /bin/sh -c "HOME=/edx/app/edxapp RBENV_ROOT=/edx/app/edxapp/.rbenv GEM_HOME=/edx/app/edxapp/.gem PATH=/edx/app/edxapp/venvs/edxapp/bin:/edx/app/edxapp/edx-platform/bin:/edx/app/edxapp/.rbenv/bin:/edx/app/edxapp/.rbenv/shims:/edx/app/edxapp/.gem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NO_PREREQ_INSTALL=1 GEM_PATH=/edx/app/edxapp/.gem SKIP_WS_MIGRATIONS=1 LANG=en_US.UTF-8 /edx/app/edxapp/venvs/edxapp/bin/pip install -i https://pypi.python.org/simple --exists-action w --use-mirrors -r /edx/app/edxapp/edx-platform/requirements/edx/local.txt"      |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+|
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|sudo -H -S -u edxapp /bin/sh -c "HOME=/edx/app/edxapp RBENV_ROOT=/edx/app/edxapp/.rbenv GEM_HOME=/edx/app/edxapp/.gem PATH=/edx/app/edxapp/venvs/edxapp/bin:/edx/app/edxapp/edx-platform/bin:/edx/app/edxapp/.rbenv/bin:/edx/app/edxapp/.rbenv/shims:/edx/app/edxapp/.gem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NO_PREREQ_INSTALL=1 GEM_PATH=/edx/app/edxapp/.gem SKIP_WS_MIGRATIONS=1 LANG=en_US.UTF-8 /edx/app/edxapp/venvs/edxapp/bin/pip install -i https://pypi.python.org/simple --exists-action w --use-mirrors -r /edx/app/edxapp/edx-platform/requirements/edx/github.txt"     |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+|
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|sudo -H -S -u edxapp /bin/sh -c "HOME=/edx/app/edxapp RBENV_ROOT=/edx/app/edxapp/.rbenv GEM_HOME=/edx/app/edxapp/.gem PATH=/edx/app/edxapp/venvs/edxapp/bin:/edx/app/edxapp/edx-platform/bin:/edx/app/edxapp/.rbenv/bin:/edx/app/edxapp/.rbenv/shims:/edx/app/edxapp/.gem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NO_PREREQ_INSTALL=1 GEM_PATH=/edx/app/edxapp/.gem SKIP_WS_MIGRATIONS=1 LANG=en_US.UTF-8 /edx/app/edxapp/venvs/edxapp/bin/pip install -i https://pypi.python.org/simple --exists-action w --use-mirrors -r /edx/app/edxapp/edx-platform/requirements/edx/post.txt"       |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+|
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|sudo -H -S -u edxapp /bin/sh -c "HOME=/edx/app/edxapp RBENV_ROOT=/edx/app/edxapp/.rbenv GEM_HOME=/edx/app/edxapp/.gem PATH=/edx/app/edxapp/venvs/edxapp/bin:/edx/app/edxapp/edx-platform/bin:/edx/app/edxapp/.rbenv/bin:/edx/app/edxapp/.rbenv/shims:/edx/app/edxapp/.gem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NO_PREREQ_INSTALL=1 GEM_PATH=/edx/app/edxapp/.gem SKIP_WS_MIGRATIONS=1 LANG=en_US.UTF-8 /edx/app/edxapp/venvs/edxapp/bin/pip install -i https://pypi.python.org/simple --exists-action w --use-mirrors -r /edx/app/edxapp/edx-platform/requirements/edx/paver.txt"      |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+|
+
+* **First time paver LMS and CMS**
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|sudo -H -S -u edxapp /bin/sh -c "HOME=/edx/app/edxapp RBENV_ROOT=/edx/app/edxapp/.rbenv GEM_HOME=/edx/app/edxapp/.gem PATH=/edx/app/edxapp/venvs/edxapp/bin:/edx/app/edxapp/edx-platform/bin:/edx/app/edxapp/.rbenv/bin:/edx/app/edxapp/.rbenv/shims:/edx/app/edxapp/.gem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NO_PREREQ_INSTALL=1 GEM_PATH=/edx/app/edxapp/.gem SKIP_WS_MIGRATIONS=1 LANG=en_US.UTF-8 SERVICE_VARIANT=lms paver update_assets lms --settings=aws"     |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+|
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|sudo -H -S -u edxapp /bin/sh -c "HOME=/edx/app/edxapp RBENV_ROOT=/edx/app/edxapp/.rbenv GEM_HOME=/edx/app/edxapp/.gem PATH=/edx/app/edxapp/venvs/edxapp/bin:/edx/app/edxapp/edx-platform/bin:/edx/app/edxapp/.rbenv/bin:/edx/app/edxapp/.rbenv/shims:/edx/app/edxapp/.gem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin NO_PREREQ_INSTALL=1 GEM_PATH=/edx/app/edxapp/.gem SKIP_WS_MIGRATIONS=1 LANG=en_US.UTF-8 SERVICE_VARIANT=cms paver update_assets cms --settings=aws"     |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+|
+
+* **Add the following variables in /edx/app/edxapp/lms.env.json file.**
+**If it is already present, just change the values. OR the lines should be added before: "ANALYTICS_SERVER_URL": "",** 
+
++-------------------------------------------------------+
+|"ADVANCED_SECURITY_CONFIG": {                          |
+|				                        |
+|"MIN_DIFFERENT_STAFF_PASSWORDS_BEFORE_REUSE":1,        |
+|							|
+|"MIN_DIFFERENT_STUDENT_PASSWORDS_BEFORE_REUSE":1       |
+|							|
+|},                                                     |
+|							|
+|"ADVANCED_SECURITY": true,                             |
++-------------------------------------------------------+
+
+|
+
+* **Inside the "FEATURES" dictionary of lms.env.json file, there is an entry called ENFORCE_PASSWORD_POLICY. Change it as follows if not add this:**
++---------------------------------+
+|"ENFORCE_PASSWORD_POLICY": true, |
++---------------------------------+
+
+|
+
+* **There is a dictionary called "REGISTRATION_EXTRA_FIELDS" in /edx/app/edxapp/lms.env.json file. Delete the entire dictionary.**
+**eg. if the dictionary is as follows:**
 
 
-License
--------
++-----------------------------------------------+
+|REGISTRATION_EXTRA_FIELDS = {			|
+|						|
+|'state':'required',				|
+|						|
+|'city': 'required',				|
+|						|
+|'pincode': 'required',				|
+|						|
+|'aadhar_id':'optional',			|
+|						|
+|'level_of_education': 'optional',		|
+|						|
+|'gender': 'optional',				|
+|						|
+|'year_of_birth': 'optional',			|
+|						|
+|'mailing_address': 'optional',			|
+|						|
+|'goals': 'optional',				|
+|						|
+|'honor_code': 'required',			|
+|						|
+|'terms_of_service': 'hidden',			|
+|						|
+|'country': 'hidden',				|
+|						|
+|} 						|
++-----------------------------------------------+
 
-The code in this repository is licensed under version 3 of the AGPL
-unless otherwise noted. Please see the `LICENSE`_ file for details.
+|
+**delete the entire text above. (If not deleted this State and City will not comes While REGITER User Account)**
 
-.. _LICENSE: https://github.com/edx/edx-platform/blob/master/LICENSE
+|
 
+* **Edit cms.env.json**
++-----------------------------------------+
+|sudo vi /edx/app/edxapp/cms.env.json     |
++-----------------------------------------+
 
-The Open edX Portal
----------------------
+"STUDIO_NAME": "IITBombayX Studio",
 
-See the `Open edX Portal`_ to learn more about Open edX. You can find
-information about the edX roadmap, as well as about hosting, extending, and
-contributing to Open edX. In addition, the Open edX Portal provides product
-announcements, the Open edX blog, and other rich community resources. 
+|
 
-To comment on blog posts or the edX roadmap, you must create an account and log
-in. If you do not have an account, follow these steps.
+* **Restart LMS and CMS**
 
-#. Visit `open.edx.org/user/register`_.
-#. Fill in your personal details.
-#. Select **Create New Account**. You are then logged in to the `Open edX
-   Portal`_.
++-------------------------------------------------------------+
+|sudo /edx/bin/supervisorctl restart edxapp:                  |
++-------------------------------------------------------------+
 
-.. _Open edX Portal: https://open.edx.org
-.. _open.edx.org/user/register: https://open.edx.org/user/register
+|
 
-Documentation
--------------
-
-Documentation is managed in the `edx-documentation`_ repository. Documentation
-is built using `Sphinx`_: you can `view the built documentation on
-ReadTheDocs`_.
-
-.. _Sphinx: http://sphinx-doc.org/
-.. _view the built documentation on ReadTheDocs: http://docs.edx.org/
-.. _edx-documentation: https://github.com/edx/edx-documentation
-
-
-Getting Help
-------------
-
-If you’re having trouble, we have several different mailing lists where
-you can ask for help:
-
--  `openedx-ops`_: everything related to *running* Open edX. This
-   includes installation issues, server management, cost analysis, and
-   so on.
--  `openedx-translation`_: everything related to *translating* Open edX
-   into other languages. This includes volunteer translators, our
-   internationalization infrastructure, issues related to Transifex, and
-   so on.
--  `openedx-analytics`_: everything related to *analytics* in Open edX.
--  `edx-code`_: anything else related to Open edX. This includes feature
-   requests, idea proposals, refactorings, and so on.
-
-You can also join our IRC channel: `#edx-code on Freenode`_.
-
-.. _openedx-ops: https://groups.google.com/forum/#!forum/openedx-ops
-.. _openedx-translation: https://groups.google.com/forum/#!forum/openedx-translation
-.. _openedx-analytics: https://groups.google.com/forum/#!forum/openedx-analytics
-.. _edx-code: https://groups.google.com/forum/#!forum/edx-code
-.. _#edx-code on Freenode: http://webchat.freenode.net/?channels=edx-code
-
-
-Issue Tracker
--------------
-
-`We use JIRA for our issue tracker`_, not GitHub Issues. To file a bug
-or request a new feature, please make a free account on our JIRA and
-create a new issue! If you’re filing a bug, we’d appreciate it if you
-would follow `our guidelines for filing high-quality, actionable bug
-reports`_. Thanks!
-
-.. _We use JIRA for our issue tracker: https://openedx.atlassian.net/
-.. _our guidelines for filing high-quality, actionable bug reports: https://openedx.atlassian.net/wiki/display/SUST/How+to+File+a+Quality+Bug+Report
-
-
-How to Contribute
------------------
-
-Contributions are very welcome, but for legal reasons, you must submit a
-signed `individual contributor’s agreement`_ before we can accept your
-contribution. See our `CONTRIBUTING`_ file for more information – it
-also contains guidelines for how to maintain high code quality, which
-will make your contribution more likely to be accepted.
-
-
-Reporting Security Issues
--------------------------
-
-Please do not report security issues in public. Please email
-security@edx.org
-
-.. _individual contributor’s agreement: http://open.edx.org/sites/default/files/wysiwyg/individual-contributor-agreement.pdf
-.. _CONTRIBUTING: https://github.com/edx/edx-platform/blob/master/CONTRIBUTING.rst
+* **Use this step if not migrated earlier**
++---------------------------------------------------------------------------------------------------+
+|sudo -u www-data /edx/bin/python.edxapp ./manage.py lms migrate student --settings aws             |
+|                                                                                                   |
+|sudo -u www-data /edx/bin/python.edxapp ./manage.py lms migrate courseware --settings aws          |
++---------------------------------------------------------------------------------------------------+

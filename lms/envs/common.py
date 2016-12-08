@@ -1960,12 +1960,6 @@ INSTALLED_APPS = (
     'teams',
 
     'xblock_django',
-
-    #Image Difference Assignment XBlock
-    'xblimagediff',
-
-    #Oppia explorations
-    'oppia',
 )
 
 ######################### CSRF #########################################
