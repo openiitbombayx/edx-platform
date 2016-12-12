@@ -1,0 +1,29 @@
+<%doc>IITBombayX TickCross Problem 6th August 2015 starts</%doc>
+<% submit_checked = False %>
+%if due_answer and (due_graded and not due_timed):
+    <%submit_checked = True %>
+%endif
+<%doc>IITBombayX TickCross Problem 6th August 2015 ends</%doc>
+<div id="chemicalequationinput_${id}" class="chemicalequationinput">
+    <div class="script_placeholder" data-src="${previewer}"/>
+<%doc>IITBombayX TickCross Problem 6th August 2015 modified the code</%doc>
+    <div class="${status.classname if not submit_checked else 'unanswered'}" id="status_${id}">
+
+    <input type="text" name="input_${id}" id="input_${id}" aria-label="${label}" aria-describedby="answer_${id}" data-input-id="${id}" value="${value|h}"
+   % if size:
+   size="${size}"
+   % endif
+   />
+
+      <p class="status" aria-describedby="input_${id}">
+        ${value|h} -
+        ${status.display_name}
+      </p>
+
+      <div id="input_${id}_preview" class="equation"></div>
+  <p id="answer_${id}" class="answer"></p>
+
+% if status in ['unsubmitted', 'correct', 'incorrect', 'incomplete']:
+</div>
+% endif
+</div>

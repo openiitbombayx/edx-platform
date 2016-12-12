@@ -1,0 +1,66 @@
+<%doc>IITBombayX TickCross Problem 6th August 2015</%doc>
+<% submit_check_s = False %>
+% if due_answer and (due_graded and not due_timed):
+    % if last_attempt >= 0 and attempts_used >= 0 and (attempts_used-last_attempt) == 1:
+        <% submit_check_s = True %>
+    %endif
+%endif
+
+% if submit_check_s:
+<script type="text/javascript">
+/*<![CDATA[*//*---->*/
+
+$(document).ready(function(){ // on document load begin
+$("#capa_dialog_${pname}").delay(2200).queue(function(){ // for id '.capa_dialog wait 2200 millsec (2.2 sec) then apply hide () (display:none)
+$(this).hide();
+});
+});
+/*--*//*]]>*/
+</script>
+% endif
+<%doc>IITBombayX TickCross Problem 6th August 2015</%doc>
+<%! from django.utils.translation import ugettext as _ %>
+
+<%namespace name='static' file='static_content.html'/>
+<h2 class="problem-header">
+  ${ problem['name'] }
+</h2>
+
+<div class="problem-progress"></div>
+
+<div class="problem" aria-live="polite" aria-relevant="all">
+  ${ problem['html'] }
+<%doc>IITBombayX TickCross Problem 6th August 2015</%doc>
+    % if submit_check_s:
+    <div class="capa_alert" id="capa_dialog_${pname}" >${_("Answer received.")}</div>
+    % endif
+<%doc>IITBombayX TickCross Problem 6th August 2015</%doc>
+  <div class="action">
+    <input type="hidden" name="problem_id" value="${ problem['name'] }" />
+    % if demand_hint_possible:
+    <div class="problem-hint" aria-live="polite"></div>
+    % endif
+    % if check_button:
+    <button class="check ${ check_button }" data-checking="${ check_button_checking }" data-value="${ check_button }"><span class="check-label">${ check_button }</span><span class="sr"> ${_("your answer")}</span></button>
+    % endif
+    % if demand_hint_possible:
+    <button class="hint-button" data-value="${_('Hint')}">${_('Hint')}</button>
+    % endif
+    % if reset_button:
+    <button class="reset" data-value="${_('Reset')}">${_('Reset')}<span class="sr"> ${_("your answer")}</span></button>
+    % endif
+    % if save_button:
+    <button class="save" data-value="${_('Save')}">${_('Save')}<span class="sr"> ${_("your answer")}</span></button>
+    % endif
+    % if answer_available:
+    <button class="show"><span class="show-label">${_('Show Answer')}</span> </button>
+    % endif
+    % if attempts_allowed :
+    <div class="submission_feedback" aria-live="polite">
+      ${_("You have used {num_used} of {num_total} submissions").format(num_used=attempts_used, num_total=attempts_allowed)}
+    </div>
+    % endif
+  </div>
+<%doc>IITBombayX TickCross Problem 6th August 2015 for debugging</%doc>
+<%doc>  ${_(":::: {num_used} {last_attempt} ").format(num_used=attempts_used,last_attempt=last_attempt)}</%doc>
+</div>

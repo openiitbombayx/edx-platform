@@ -1,0 +1,115 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='/static_content.html'/>
+<%doc> IITBombayx Added modal for language option</%doc>
+<%include file='../modal/_modal-settings-language.html'/>
+
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Register/Log into your {platform_name} Account").format(platform_name=platform_name)}</%block>
+
+<%block name="bodyclass">register_login_page</%block><!--IITBombayX-2015 Nitin Ayer, block is added to identify CSS in SCSS files-->
+<!--IITBombayX-2015, CSS for this page is written _register_login.scss files in themes foldes by Nitin Ayer-->
+
+<%block name="js_extra">
+<%doc>
+IITBombayX - 9th Jan 2016; retained the field validation method as being used in Cypress version. Earlier, it was customized. Now it is being restored back.
+</%doc>
+    <script src="${static.url('js/vendor/jquery-ui.min.js')}"></script>
+    <script src="${static.url('js/vendor/underscore-min.js')}"></script>
+    <script src="${static.url('js/vendor/underscore.string.min.js')}"></script>
+    <script src="${static.url('js/vendor/backbone-min.js')}"></script>
+    <script src="${static.url('js/vendor/url.min.js')}"></script>
+    <script src="${static.url('js/vendor/history.js')}"></script>
+    <script type="text/javascript">
+
+//IITBombayX - 9th Jan 2016; Field validation method being restored- starts
+   jQuery(document).ready(function($) {
+         $('#register-city').on('keyup', function() {   // check for changes
+        $.ajax({
+           url:"/city_ajax", 
+           type: "post",
+           data:{id: $('#register-state').val()},
+           contentType: "application/json; charset=utf-8",
+           datatype: 'json',
+           success: function(result)
+                 { 
+                    
+    
+          $("#register-city").autocomplete({
+            source: result
+          });
+
+                },
+            error: function()
+            { 
+            
+              alert("Please select state first");
+            }
+           });
+       });
+      $( "#register-city" ).change(function() {
+        $( "#register-city" ).autocomplete( "close" );
+});
+    });
+    
+//IITBombayX - 9th Jan 2016; Field validation method being restored- ends
+ </script>
+
+
+    <%static:js group='student_account'/>
+</%block>
+
+<%block name="header_extras">
+    % for template_name in ["account", "access", "form_field", "login", "register", "institution_login", "institution_register", "password_reset", "hinted_login"]:
+        <script type="text/template" id="${template_name}-tpl">
+            <%static:include path="student_account/${template_name}.underscore" />
+        </script>
+% endfor
+</%block>
+
+<%doc>IITBombayX - 9th Jan 2016; Field validation method being restored- starts
+</%doc>
+
+
+<%doc>IITBombayX - 9th Jan 2016; Field validation method being restored- ends
+</%doc>
+
+
+<%doc>
+<section class="introduction">
+  <header>
+   % if initial_mode == "register":
+    <h1 class="title">
+      <span class="title-super">${_("Welcome to {platform_name}!").format(platform_name=platform_name)}</span>
+      <span class="title-sub">${_("Register below to create your {platform_name} account").format(platform_name=platform_name)}</span>
+    </h1>
+    % elif initial_mode == "login": 
+    <h1 class="title">
+      <span class="title-super">${_("Please log in")}</span>
+      <span class="title-sub">${_("to access your account and courses")}</span>
+    </h1>
+   % endif
+  </header>
+</section>
+</%doc>
+<div class="section-bkg-wrapper">
+    <div id="login-and-registration-container"
+        class="login-register"
+        data-initial-mode="${initial_mode}"
+        data-third-party-auth='${third_party_auth|h}'
+        data-third-party-auth-hint='${third_party_auth_hint}'
+        data-next-url='${login_redirect_url|h}'
+        data-platform-name='${platform_name}'
+        data-login-form-desc='${login_form_desc|h}'
+        data-registration-form-desc='${registration_form_desc|h}'
+        data-password-reset-form-desc='${password_reset_form_desc|h}'
+    />
+</div>
+
+<!--IITBombayX-2015, Nitin Ayer, following if condition for footer is commented to enable the footer in login and registration page-->
+<%doc>% if settings.FEATURES.get('ENABLE_COMBINED_LOGIN_REGISTRATION'):
+    ## This overwrites the "footer" block declared in main.html
+    ## with an empty block, effectively hiding the footer
+    ## from logistration pages.
+    <%block name="footer"/>
+% endif</%doc>
