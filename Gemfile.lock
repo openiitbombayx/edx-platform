@@ -7,8 +7,7 @@ GEM
       thor
     colorize (0.5.8)
     dalli (2.6.4)
-    ffi (1.9.0)
-    launchy (2.1.2)
+       launchy (2.1.2)
       addressable (~> 2.3)
     neat (1.6.0)
       bourbon (>= 3.1)
